@@ -1,0 +1,44 @@
+@page
+@model Aula04.RazorPages.Pages.Cursos.Alunos.Index
+
+<h1 class="mb-3">Alunos registrados</h1>
+
+<a class="btn btn-primary mb-3" asp-page="/Cursos/Alunos/Create">Criar novo aluno</a>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.AlunoList[0].AlunoID)</th>
+                <th>@Html.DisplayNameFor(model => model.AlunoList[0].NomeAluno)</th>
+                <th>@Html.DisplayNameFor(model => model.AlunoList[0].Email)</th>
+                <th>@Html.DisplayNameFor(model => model.AlunoList[0].DataInscricao)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+             @foreach (var alunoModel in Model.AlunoList)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => alunoModel.AlunoID)</td>
+                        <td>@Html.DisplayFor(model => alunoModel.NomeAluno)</td>
+                        <td>@Html.DisplayFor(model => alunoModel.Email)</td>
+                        <td>@Html.DisplayFor(model => alunoModel.DataInscricao)</td>
+                        <td class="d-flex gap-3">
+                            <a asp-page="./Edit" asp-route-id="@alunoModel.AlunoID">
+                                <i class="bi-pencil-square"></i> Alterar
+                            </a>
+                            <a asp-page="./Details" asp-route-id="@alunoModel.AlunoID">
+                                <i class="bi-eye"></i> Visualizar
+                            </a>
+                            <a asp-page="./Delete" asp-route-id="@alunoModel.AlunoID">
+                                <i class="bi-trash"></i> Remover
+                            </a>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+    
+</div>
